@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>注册页面 - UFO视频加速器</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+    <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+    <meta name="author" content="yinqi">
+    <link href="/static/libs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/libs/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="/static/libs/css/animate.css" rel="stylesheet">
+    <link href="/static/libs/css/style.min.css" rel="stylesheet">
+    <link href="/static/default/css/login.css" rel="stylesheet">
+</head>
+<body>
+<div class="row lyear-wrapper" style="background: darkslateblue; background-size: cover;">
+    <div class="lyear-login">
+        <div class="login-center">
+            <div class="login-header text-center">
+                <a href="index.html"> <span style="font-size: 22px;color: white;font-weight: bold;">新用户注册</span><!--<img alt="light year admin" src="images/logo-sidebar.png">--> </a>
+            </div>
+            <form id="login_form">
+                <div class="form-group has-feedback feedback-left">
+                    <input type="text" placeholder="请输入账号" class="form-control login_input_color" name="username" id="username" />
+                    <span class="mdi mdi-account form-control-feedback" aria-hidden="true"></span>
+                </div>
+                <div class="form-group has-feedback feedback-left">
+                    <input type="password" placeholder="请输入密码" class="form-control login_input_color" id="password" name="password" />
+                    <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
+                </div>
+                <div class="form-group has-feedback feedback-left">
+                    <input type="password" placeholder="请确认密码" class="form-control login_input_color" id="re_password" name="re_password" />
+                    <span class="mdi mdi-lock form-control-feedback" aria-hidden="true"></span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-block btn-primary" type="button" id="login" data-loading-text="处理中...">确认注册</button>
+                </div>
+            </form>
+            <footer class="col-sm-12 text-center text-white">
+                <p class="m-b-0"><a class="login_href" href="/login.html">返回登陆</a></p>
+            </footer>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/static/libs/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/libs/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/static/libs/js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="/static/libs/js/lightyear.js"></script>
+<script type="text/javascript" src="/static/default/js/register.js"></script>
+</body>
+</html>
