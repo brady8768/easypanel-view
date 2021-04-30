@@ -3,12 +3,8 @@ declare (strict_types = 1);
 
 namespace app\utils;
 
-
 class RequestControl
 {
-    //private const URL = 'http://mmt.bbapk.xyz';
-    private const URL = 'http://mmt.com/webapi';
-
     public static function getSub($param){
         $api = '/client/sub';
         return self::curl($api, $param);
@@ -91,14 +87,12 @@ class RequestControl
     }
 
     private static function curl($url, $param = []){
-        $url = self::URL . '/' . config('app.panel_key') . $url;
-
+        $url = config('app.merchant_url') . '/' . config('app.panel_key') . $url;
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_HEADER, 0);
-        //curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 10);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
         if($param){

@@ -46,7 +46,7 @@ $(function () {
                 '<div class="table-responsive"><table class="table table-hover"><thead><tr><th>操作</th><th>名称</th><th>地址</th><th>端口</th><th>状态</th></tr></thead>';
             _node += '<tbody>';
             $.each(res.data.nodes, function (i, v) {
-                _node += '<tr><td><button type="button">扫码</button></td>';
+                _node += '<tr><td><button class="qrcode_btn" type="button">扫码</button></td>';
                 _node += '<td>'+v.title+'</td>';
                 _node += '<td>'+v.host+'</td>';
                 _node += '<td>'+v.host+'</td>';
@@ -62,4 +62,20 @@ $(function () {
             $('div.container-fluid').append(_node);
         }
     })
+
+    $(document).on('click','button.qrcode_btn', function () {
+        $("#qrcode").qrcode({
+            render: "canvas",
+            text: 'http://www.jq22.com',
+            width: "200", //二维码的宽度
+            height: "200", //二维码的高度
+            background: "#ffffff", //二维码的后景色
+            foreground: "#000000", //二维码的前景色
+            //src: './logo.jpeg' //二维码中间的图片
+        });
+    })
+    function createQrcode () {
+        var url = 'http://www.jq22.com;';//需要生成二维码的网址
+        makeCode(url);
+    }
 });

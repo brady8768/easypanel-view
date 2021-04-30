@@ -29,6 +29,8 @@ return [
     'error_message'    => '页面错误！请稍后再试～',
     // 显示错误信息
     'show_error_msg'   => false,
-
+    //面板秘钥
     'panel_key' => env('app.panel_key', ''),
+    //后台地址
+    'merchant_url'  =>  env('app.merchant_url', ''),
 ];
