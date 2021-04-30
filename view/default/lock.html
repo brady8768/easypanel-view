@@ -8,7 +8,7 @@
 <nav class="sidebar-main">
     <ul class="nav nav-drawer">
         <li class="nav-item"> <a href="/index.html"><i class="mdi mdi-home-outline"></i> 综合数据</a> </li>
-        <li class="nav-item active"> <a href="/subscribe.html"><i class="mdi mdi-lan-pending"></i> 订阅管理</a> </li>
+        <li class="nav-item"> <a href="/subscribe.html"><i class="mdi mdi-lan-pending"></i> 订阅管理</a> </li>
         <li class="nav-item"> <a href="/service.html"><i class="mdi mdi-wan"></i> 流量套餐</a> </li>
         <li class="nav-item"> <a href="/record.html"><i class="mdi mdi-file-document"></i> 购买记录</a> </li>
         <li class="nav-item"> <a href="/download.html"><i class="mdi mdi-arrow-collapse-down"></i> 软件下载</a> </li>
@@ -21,9 +21,17 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header"><h4><strong>订阅管理</strong></h4></div>
+                <div class="card-header"><h4>账号绑定</h4></div>
                 <div class="card-body">
-
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-xs-12" for="email">绑定邮箱</label>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="输入要绑定的邮箱..">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-label btn-primary" id="submit"><label><i class="mdi mdi-checkbox-marked-circle-outline"></i></label> 确认绑定</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,5 +42,5 @@
 {block name="popup"}{/block}
 
 {block name="script"}
-<script type="text/javascript" src="/static/default/js/subscribe.js"></script>
+<script type="text/javascript" src="/static/default/js/lock.js"></script>
 {/block}

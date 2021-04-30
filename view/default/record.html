@@ -1,0 +1,64 @@
+{extend name="default/layout" /}
+
+{block name="style"}{/block}
+
+{block name="nav"}
+<nav class="sidebar-main">
+    <ul class="nav nav-drawer">
+        <li class="nav-item"> <a href="/index.html"><i class="mdi mdi-home-outline"></i> 综合数据</a> </li>
+        <li class="nav-item"> <a href="/subscribe.html"><i class="mdi mdi-lan-pending"></i> 订阅管理</a> </li>
+        <li class="nav-item"> <a href="/service.html"><i class="mdi mdi-wan"></i> 流量套餐</a> </li>
+        <li class="nav-item active"> <a href="/record.html"><i class="mdi mdi-file-document"></i> 购买记录</a> </li>
+        <li class="nav-item"> <a href="/download.html"><i class="mdi mdi-arrow-collapse-down"></i> 软件下载</a> </li>
+    </ul>
+</nav>
+{/block}
+
+{block name="body"}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header"><h4>购买记录</h4></div>
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="popup"}
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                <h4 class="modal-title" id="gridSystemModalLabel">重要提示</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div>
+                        系统检测到您的账号当前含有未到期的套餐服务，如果您确认购买新的套餐服务，那么当前套餐服务将会自动失效。该操作不可逆，请您确认是否继续？
+                    </div>
+                    <div>
+                        <input type="hidden" id="trade_no">
+                        <label class="lyear-checkbox checkbox-warning m-t-10">
+                            <input type="checkbox" name="agree" id="agree"><span style="color: red;">我已了解该操作的风险，并确认继续购买。</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">放弃购买</button>
+                <button type="button" class="btn btn-primary disabled" id="continue_btn">继续购买</button>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+
+{block name="script"}
+<script type="text/javascript" src="/static/default/js/record.js"></script>
+{/block}

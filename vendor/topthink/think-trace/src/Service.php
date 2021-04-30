@@ -16,6 +16,6 @@ class Service extends BaseService
 {
     public function register()
     {
-        $this->app->middleware->add(TraceDebug::class);
+        //$this->app->middleware->add(TraceDebug::class);
     }
 }

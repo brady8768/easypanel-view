@@ -13,7 +13,11 @@ class Login extends Validate
      *
      * @var array
      */
-    protected $rule = [];
+    protected $rule = [
+        'account|账号' => 'require|alphaDash|length:4,30',
+        'password|密码' => 'require|alphaDash|length:6,30',
+        'invite_code|邀请码' => 'alphaNum|length:12',
+    ];
 
     /**
      * 定义错误信息
@@ -22,4 +26,9 @@ class Login extends Validate
      * @var array
      */
     protected $message = [];
+
+    protected $scene = [
+        'login' => ['account','password'],
+        'reg' => ['account','password','invite_code'],
+    ];
 }

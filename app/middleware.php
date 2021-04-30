@@ -8,4 +8,5 @@ return [
     // Session初始化
     // \think\middleware\SessionInit::class
     'think\middleware\SessionInit',  //开启session
+    //'think\trace\TraceDebug',  //开启trace页面
 ];

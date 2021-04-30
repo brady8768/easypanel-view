@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>首页 - UFO视频加速器</title>
+    <title>{:env('app.panel_name')}</title>
     <link rel="icon" href="favicon.ico" type="image/ico">
     <link href="/static/libs/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/libs/css/materialdesignicons.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
             <div id="logo" class="sidebar-header">
                 <a href="index.html">
                     <!--                    <img src="/static/images/logo-sidebar.png" title="LightYear" alt="LightYear" />-->
-                    <div style="width:240px;height:68px;line-height:68px;font-size: 20px;font-weight:bold;font-family: 'Microsoft yahei', Roboto, sans-serif">UFO视频加速器</div>
+                    <div style="width:240px;height:68px;line-height:68px;font-size: 20px;font-weight:bold;font-family: 'Microsoft yahei', Roboto, sans-serif">{:env('app.panel_name')}</div>
                 </a>
             </div>
             <div class="lyear-layout-sidebar-scroll">
@@ -60,9 +60,11 @@
                                 <span>{:session('user')->account ?? ''} <span class="caret"></span></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
-                                <li> <a href="lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
-                                <li> <a href="javascript:;"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
+                                <li> <a href="/lock.html"><i class="mdi mdi-account-key"></i> 账号绑定</a> </li>
+                                <li> <a href="/password.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+<!--                                <li> <a href="javascript:;"><i class="mdi mdi-delete"></i> 清空缓存</a></li>-->
+                                <li class="divider"></li>
+                                <li> <a href="/recharge.html"><i class="mdi mdi-credit-card"></i> 账户充值</a> </li>
                                 <li class="divider"></li>
                                 <li> <a href="javascript:;" id="logout"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
                             </ul>
@@ -221,6 +223,7 @@
 <script type="text/javascript" src="/static/libs/js/bootstrap-notify.min.js"></script>
 <script type="text/javascript" src="/static/libs/js/lightyear.js"></script>
 <script type="text/javascript" src="/static/libs/js/jconfirm/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="/static/default/js/common.js"></script>
 <script type="text/javascript" src="/static/default/js/layout.js"></script>
 
 {block name="script"}{/block}

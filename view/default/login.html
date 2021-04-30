@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>登录页面 - UFO视频加速器</title>
+    <title>{:env('app.panel_name')}</title>
     <link rel="icon" href="favicon.ico" type="image/ico">
     <meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
     <meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
@@ -19,7 +19,7 @@
     <div class="lyear-login">
         <div class="login-center">
             <div class="login-header text-center">
-                <a href="index.html"> <span style="font-size: 22px;color: white;font-weight: bold;">UFO视频加速器</span><!--<img alt="light year admin" src="images/logo-sidebar.png">--> </a>
+                <a href="index.html"> <span style="font-size: 22px;color: white;font-weight: bold;">{:env('app.panel_name')}</span><!--<img alt="light year admin" src="images/logo-sidebar.png">--> </a>
             </div>
             <form id="login_form">
                 <div class="form-group has-feedback feedback-left">
@@ -44,6 +44,7 @@
 <script type="text/javascript" src="/static/libs/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/libs/js/bootstrap-notify.min.js"></script>
 <script type="text/javascript" src="/static/libs/js/lightyear.js"></script>
+<script type="text/javascript" src="/static/default/js/common.js"></script>
 <script type="text/javascript" src="/static/default/js/login.js"></script>
 </body>
 </html>

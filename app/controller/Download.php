@@ -5,9 +5,9 @@ namespace app\controller;
 
 use app\utils\RequestControl;
 
-class Service extends Auth
+class Download extends Auth
 {
     public function getData(){
-        return RequestControl::getServiceList();
+        return json(['code'=>0,'data'=>[]]);
     }
 }

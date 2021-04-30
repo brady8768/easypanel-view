@@ -23,10 +23,12 @@ return [
     'deny_app_list'    => [],
 
     // 异常页面的模板文件
-    'exception_tmpl'   => app()->getThinkPath() . 'tpl/think_exception.tpl',
+    'exception_tmpl'   =>  root_path() . '/view/' . (env('view.theme') ?: 'default') . '/stop.html',
 
     // 错误显示信息,非调试模式有效
     'error_message'    => '页面错误！请稍后再试～',
     // 显示错误信息
     'show_error_msg'   => false,
+
+    'panel_key' => env('app.panel_key', ''),
 ];

@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace app\controller;
 
 use app\utils\RequestControl;
+use think\exception\ValidateException;
 
 class Register extends Base
 {
@@ -16,14 +17,17 @@ class Register extends Base
     public function reg(){
         $param = request()->param();
 
-        $json = RequestControl::register($param);
-
-        if($json === false || $json->code){
-            return json(['code'=>1]);
+        try{
+            Validate(\app\validate\Login::class)->scene('reg')->check($param);
+        }catch (ValidateException $e){
+            abort(400, $e->getMessage());
         }
 
-        session('user', $json->data);
+        $json = RequestControl::register($param);
 
+        if($json->code) return $json;
+
+        session('user', $json->data);
         return json(['code'=>0]);
     }
 }
