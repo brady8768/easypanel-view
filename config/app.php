@@ -29,8 +29,16 @@ return [
     'error_message'    => '页面错误！请稍后再试～',
     // 显示错误信息
     'show_error_msg'   => false,
-    //面板秘钥
+
+    //面板标题
+    'panel_title' => env('app.panel_title', ''),
+    //面板关键词
+    'panel_keywords' => env('app.panel_keywords', ''),
+    //面板描述
+    'panel_description' => env('app.panel_description', ''),
+
+    //面板通讯秘钥
     'panel_key' => env('app.panel_key', ''),
-    //后台地址
+    //商户端域名
     'merchant_url'  =>  env('app.merchant_url', ''),
 ];
