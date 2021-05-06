@@ -87,7 +87,8 @@ class RequestControl
     }
 
     private static function curl($url, $param = []){
-        $url = config('app.merchant_url') . '/' . config('app.panel_key') . $url;
+        $url = 'http://' . config('app.merchant_url') . '/webapi/' . config('app.panel_key') . $url;
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
