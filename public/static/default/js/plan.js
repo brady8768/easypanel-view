@@ -20,7 +20,7 @@ $(function () {
                 if (res.data.hasOwnProperty('half')) _html += '<button class="btn btn-w-md btn-round btn-secondary" carry="half">半年付 ' + res.data.half + ' 元</button>';
                 if (res.data.hasOwnProperty('year')) _html += '<button class="btn btn-w-md btn-round btn-secondary" carry="year">一年付 ' + res.data.year + ' 元</button>';
                 if (res.data.hasOwnProperty('forever')) _html += '<button class="btn btn-w-md btn-round btn-secondary" carry="forever">永久付 ' + res.data.forever + ' 元</button>';
-                _html += '</div><div><span> 套餐介绍：'+TransferString(res.data.intro)+' </span></div>';
+                _html += '</div><div><span> 套餐介绍：'+common.cutString(res.data.intro)+' </span></div>';
 
                 _html += '</div></p>';
                 _html += '<div style="text-align: center;margin-top: 30px;"><button class="btn btn-label btn-dark" data-service-value="' + res.data.id + '"><label><i class="mdi mdi-rotate-right"></i></label> 立即下单</button>';
@@ -43,17 +43,5 @@ $(function () {
                 window.location.href = '/order.html?trade_no=' + res.data.trade_no;
             })
         });
-    }
-
-    function TransferString(content)
-    {
-        var string = content;
-        try{
-            string=string.replace(/\r\n/g,"<br>")
-            string=string.replace(/\n/g,"<br>");
-        }catch(e) {
-            alert(e.message);
-        }
-        return string;
     }
 });

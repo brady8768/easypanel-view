@@ -7,7 +7,7 @@ use app\utils\RequestControl;
 
 class Link extends Base
 {
-    public function sub()
+    public function subscribe()
     {
         $param = request()->param();
 
@@ -42,9 +42,9 @@ class Link extends Base
         $json = RequestControl::getSub($param);
 
         if($json === false || $json->code){
-            return json(['code'=>1]);
+            return null;
         }
 
-        return json(['code'=>0, 'data'=>$json->data]);
+        return $json->data;
     }
 }

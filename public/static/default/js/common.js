@@ -54,5 +54,11 @@ var common = {
             args[argname] = unescape(value);
         }
         return args;
+    },
+
+    cutString : function (str) {
+        str = str.replace(/\r\n/g,"<br><br>")
+        str = str.replace(/\n/g,"<br><br>");
+        return str;
     }
 }

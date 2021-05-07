@@ -24,7 +24,6 @@ class Register extends Base
         }
 
         $json = RequestControl::register($param);
-
         if($json->code) return $json;
 
         session('user', $json->data);

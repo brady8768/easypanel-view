@@ -54,12 +54,20 @@ class ExceptionHandle extends Handle
 
         // 参数验证错误
         if ($e instanceof ValidateException) {
-            return json($e->getError(), 422);
+            if($request->isAjax()){
+                return json($e->getError(), 422);
+            }else{
+                return response($e->getError(), 422);
+            }
         }
 
         // 请求异常
-        if ($e instanceof HttpException && $request->isAjax()) {
-            return response($e->getMessage(), $e->getStatusCode());
+        if ($e instanceof HttpException) {
+            if($request->isAjax()){
+                return json($e->getMessage(), $e->getStatusCode());
+            }else{
+                return response($e->getMessage(), $e->getStatusCode());
+            }
         }
 
         // 其他错误交给系统处理

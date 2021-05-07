@@ -16,22 +16,26 @@ $(function () {
                 '<div class="col-lg-6">\n' +
                 '<div>当前剩余流量 450GB 将于2020年5月6日凌晨重置流量</div>\n' +
             '                      <div class="input-group">\n' +
-            '                        <input type="text" class="form-control" readonly value="'+res.data.sub_url+'" placeholder="请输入关键词...">\n' +
+            '                        <input type="text" class="form-control" readonly id="sub_input" value="'+res.data.sub_url+'" placeholder="请输入关键词...">\n' +
             '                        <span class="input-group-btn">\n' +
-            '                          <button class="btn btn-dark" type="button">复制订阅</button>\n' +
+            '                          <button class="btn btn-dark" type="button" id="copy_url">复制订阅</button>\n' +
             '                        </span>\n' +
             '                      </div>\n' +
             '                    </div>' +
                 '</p>\n' +
                 '                  </div>\n' +
                 '                  <div class="tab-pane fade" id="import">\n' +
-                '                    <p><button class="btn btn-purple btn-w-md" type="button">Clash导入</button></p>\n' +
+                '                    <p><button class="btn btn-purple btn-w-md" type="button" id="import_btn">Clash导入</button></p>\n' +
                 '                  </div>\n' +
                 '                  <div class="tab-pane fade" id="reset">\n' +
-                '                    <p><button class="btn btn-danger btn-w-md" type="button">重置订阅</button></p>\n' +
+                '                    <p><div><h4>重置订阅后，原订阅地址即时失效，新的订阅地址在最多不超过60秒内生效！</h4></div><div style="margin-top: 2rem;"><button class="btn btn-danger btn-w-md" type="button" id="reset_btn">重置订阅</button></div></p>\n' +
                 '                  </div>\n' +
                 '                  <div class="tab-pane fade" id="back">\n' +
-                '                    <p>这里介绍退还规则 重点只可退还至账户余额 不可提现 当前可退还金额 55.55<button class="btn btn-brown btn-w-md" type="button">退还订阅</button></p>\n' +
+                '                    <p><h4><strong>退还规则</strong></h4><div>1、订阅退还的费用直接进入账户余额，可用于本站任意消费，但不可提现！</div>' +
+                '<div>2、月付套餐退还规则，已使用不足10天按10天计算，若使用超过20天则无法退还！</div>' +
+                '<div>3、季付、半年、一年套餐退还规则，已使用不足1个月按一个月计算，若剩余时间不足30天则无法退还！</div>' +
+                '<div>4、永久套餐退还规则，已使用不足按总流量1/10的按1/10计算，若剩余流量不足1/10则无法退还！</div>' +
+                '<div style="margin-top: 2rem;"><button class="btn btn-brown btn-w-md" type="button" id="back_btn">退还订阅</button></div></p>\n' +
                 '                  </div>\n' +
                 '                </div>' +
                 '</div>';
@@ -43,14 +47,14 @@ $(function () {
                 '            <div class="card">\n' +
                 '                <div class="card-header"><h4><strong>可用节点</strong></h4></div>\n' +
                 '                <div class="card-body">\n' +
-                '<div class="table-responsive"><table class="table table-hover"><thead><tr><th>操作</th><th>名称</th><th>地址</th><th>端口</th><th>状态</th></tr></thead>';
+                '<div class="table-responsive"><table class="table table-hover"><thead><tr><th>操作</th><th>名称</th><th>地址</th><th>端口</th><th>倍率</th></tr></thead>';
             _node += '<tbody>';
             $.each(res.data.nodes, function (i, v) {
-                _node += '<tr><td><button class="qrcode_btn" type="button">扫码</button></td>';
+                _node += '<tr><td><button class="qrcode_btn" type="button" qr-text="'+getBase64(v)+'">扫码</button></td>';
                 _node += '<td>'+v.title+'</td>';
                 _node += '<td>'+v.host+'</td>';
                 _node += '<td>'+v.host+'</td>';
-                _node += '<td>'+v.port+'</td>';
+                _node += '<td>'+v.rate+'x</td>';
                 _node += '</tr>';
             })
             _node += '</tbody></table></div>';
@@ -60,22 +64,58 @@ $(function () {
             '    </div>';
 
             $('div.container-fluid').append(_node);
+            copyUrl();
         }
     })
 
+    function getBase64(obj) {
+        let val = {
+            host : obj.host,
+            port : obj.port
+        };
+        return $.base64.encode(val.toString());
+    }
+
+    function copyUrl (){
+        let clipboard = new Clipboard('#copy_url', {
+            text: function() {
+                return $('#sub_input').val();
+            }
+        });
+        clipboard.on('success',
+            function(e) {
+                common.ok('订阅地址复制成功');
+            });
+        clipboard.on('error',
+            function(e) {
+                common.err('订阅地址复制失败');
+            });
+    }
+
     $(document).on('click','button.qrcode_btn', function () {
-        $("#qrcode").qrcode({
+        let txt = $(this).attr('qr-text');
+        $("#qrcode-box").empty().qrcode({
             render: "canvas",
-            text: 'http://www.jq22.com',
-            width: "200", //二维码的宽度
-            height: "200", //二维码的高度
+            text: txt,
+            width: 256, //二维码的宽度
+            height: 256, //二维码的高度
             background: "#ffffff", //二维码的后景色
-            foreground: "#000000", //二维码的前景色
+            foreground: "#000000" //二维码的前景色
             //src: './logo.jpeg' //二维码中间的图片
         });
+        $('#gridSystemModal').modal('show');
     })
-    function createQrcode () {
-        var url = 'http://www.jq22.com;';//需要生成二维码的网址
-        makeCode(url);
-    }
+
+    $(document).on('click','#import_btn',function () {
+        alert('未开发完成');
+    });
+
+    $(document).on('click','#reset_btn',function () {
+        alert('未开发完成');
+    });
+
+    $(document).on('click','#back_btn',function () {
+        alert('未开发完成');
+    });
+
 });

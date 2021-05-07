@@ -8,6 +8,6 @@ use app\utils\RequestControl;
 class Download extends Auth
 {
     public function getData(){
-        return json(['code'=>0,'data'=>[]]);
+        return RequestControl::getClientList();
     }
 }

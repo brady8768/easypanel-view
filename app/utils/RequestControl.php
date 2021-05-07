@@ -5,19 +5,20 @@ namespace app\utils;
 
 class RequestControl
 {
+    //订阅操作
     public static function getSub($param){
         $api = '/client/sub';
         return self::curl($api, $param);
     }
 
-    // 获取订阅相关数据
+    //订阅数据
     public static function getSubscribe($user_id){
         $api = '/subscribe/sub';
         $param['user_id'] = $user_id;
         return self::curl($api, $param);
     }
 
-    // 获取购买记录
+    //购买记录
     public static function getRecord($user_id, $page){
         $api = '/order/record';
         $param['user_id'] = $user_id;
@@ -25,7 +26,7 @@ class RequestControl
         return self::curl($api, $param);
     }
 
-    // 结算订单
+    //结算订单
     public static function settlementOrder($user_id, $trade_no, $agree){
         $api = '/order/settlement';
         $param['user_id'] = $user_id;
@@ -34,7 +35,7 @@ class RequestControl
         return self::curl($api, $param);
     }
 
-    // 获取订单信息
+    //获取订单
     public static function confirmOrder($user_id, $trade_no){
         $api = '/order/confirm';
         $param['user_id'] = $user_id;
@@ -42,7 +43,7 @@ class RequestControl
         return self::curl($api, $param);
     }
 
-    // 套餐预下单
+    //套餐下单
     public static function advanceServiceOrder($user_id, $service_id, $service_cycle){
         $api = '/service/order';
         $param['user_id'] = $user_id;
@@ -51,39 +52,42 @@ class RequestControl
         return self::curl($api, $param);
     }
 
-    // 浏览套餐详情
-    public static function browseService($user_id, $service_id){
-        $api = '/service/buy';
-        $param['user_id'] = $user_id;
-        $param['service_id'] = $service_id;
-        return self::curl($api, $param);
-    }
-
+    //首页数据
     public static function getUserSummaryData($user_id){
         $api = '/user/summary';
         $param['user_id'] = $user_id;
         return self::curl($api, $param);
     }
 
+    //注册
     public static function register($param){
         $api = '/user/register';
         return self::curl($api, $param);
     }
 
+    //登陆
     public static function checkAccount($param){
         $api = '/user/login';
         return self::curl($api, $param);
     }
 
+    //套餐数据
     public static function getServiceList(){
         $api = '/service/getListData';
         return self::curl($api);
     }
 
+    //获取套餐
     public static function getServiceConfirm($id){
         $api = '/service/getData';
         $param['id'] = $id;
         return self::curl($api, $param);
+    }
+
+    //获取软件
+    public static function getClientList(){
+        $api = '/user/client';
+        return self::curl($api);
     }
 
     private static function curl($url, $param = []){
@@ -94,8 +98,10 @@ class RequestControl
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 10);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT , 5);
         curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         if($param){
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param));

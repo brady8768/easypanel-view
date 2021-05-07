@@ -31,8 +31,30 @@
 </div>
 {/block}
 
-{block name="popup"}{/block}
+{block name="popup"}
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="gridSystemModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="gridSystemModalLabel">节点二维码</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div id="qrcode-box" style="text-align: center;"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{/block}
 
 {block name="script"}
+<script type="text/javascript" src="/static/libs/js/clipboard/clipboard.min.js"></script>
+<script type="text/javascript" src="/static/libs/js/qrcode/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="/static/libs/js/jquerybase64/jquery.base64.js"></script>
 <script type="text/javascript" src="/static/default/js/subscribe.js"></script>
 {/block}

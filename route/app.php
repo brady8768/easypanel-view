@@ -10,5 +10,4 @@
 // +----------------------------------------------------------------------
 use think\facade\Route;
 
-
-Route::get('subscribe/:token', 'Link/sub');
+Route::get('sub/:token', 'Link/subscribe');
