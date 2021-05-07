@@ -11,7 +11,7 @@ class Link extends Base
     {
         $param = request()->param();
 
-        $header = request()->header('user-agent');
+        $header = request()->header('user-agent') ?? '';
 
         $client = 'v2ray';
 
