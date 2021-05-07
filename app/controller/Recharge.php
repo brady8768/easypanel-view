@@ -7,13 +7,8 @@ use app\utils\RequestControl;
 
 class Recharge extends Auth
 {
-    public function getData(){
+    public function confirm(){
         $param = request()->param();
-        //return RequestControl::getServiceConfirm($param['id']);
-    }
-
-    public function bind(){
-        $param = request()->param();
-        //return RequestControl::advanceServiceOrder(session('user')->id, $param['id'], $param['cycle']);
+        return RequestControl::recharge(session('user')->id, $param);
     }
 }

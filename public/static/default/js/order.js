@@ -15,7 +15,7 @@ $(function () {
             _html += '<div>当前余额：'+res.data.balance+' 元</div>';
             _html += '</div></p>';
             if(Number(res.data.money) > res.data.balance){
-                _html += '<div style="text-align: center">当前账户余额不足，请先 <a href="/recharge.html">去充值</a> 后再进行结算</div>';
+                _html += '<div style="text-align: center">当前账户余额不足，请先 <a href="/recharge.html?callback='+encodeURIComponent(window.location.href)+'">去充值</a> 后再进行结算</div>';
             }else{
                 _html += '<div style="text-align: center;margin-top: 30px;"><button class="btn btn-label btn-dark"><label><i class="mdi mdi-currency-jpy"></i></label> 立即结算</button></div>';
             }
