@@ -111,7 +111,12 @@ $(function () {
     });
 
     $(document).on('click','#reset_btn',function () {
-        alert('未开发完成');
+        common.ajax('subscribe/reset', {}, function (res) {
+            setTimeout(function() {
+                lightyear.url('/subscribe.html');
+                common.ok('恭喜您，订阅已重置成功，新的订阅地址将在1分钟内生效！');
+            }, 1e3)
+        });
     });
 
     $(document).on('click','#back_btn',function () {

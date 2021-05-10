@@ -16,4 +16,8 @@ class Subscribe extends Auth
         }
         return json(['code'=>0,'data'=>$data]);
     }
+
+    public function reset(){
+        return RequestControl::resetSubscribe(session('user')->id);
+    }
 }

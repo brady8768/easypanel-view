@@ -106,6 +106,13 @@ class RequestControl
         return self::curl($api, $param);
     }
 
+    //订阅重置
+    public static function resetSubscribe($user_id){
+        $api = '/subscribe/reset';
+        $param['user_id'] = $user_id;
+        return self::curl($api, $param);
+    }
+
     //购买记录
     public static function getRecord($user_id, $page){
         $api = '/order/record';
