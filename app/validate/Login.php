@@ -16,6 +16,7 @@ class Login extends Validate
     protected $rule = [
         'account|账号' => 'require|alphaDash|length:4,30',
         'password|密码' => 'require|alphaDash|length:6,30',
+        'new_pwd|密码' => 'require|alphaDash|length:6,30',
         'invite_code|邀请码' => 'alphaNum|length:12',
     ];
 
@@ -30,5 +31,6 @@ class Login extends Validate
     protected $scene = [
         'login' => ['account','password'],
         'reg' => ['account','password','invite_code'],
+        'change' => ['new_pwd'],
     ];
 }

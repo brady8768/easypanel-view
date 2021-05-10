@@ -4,16 +4,15 @@ declare (strict_types = 1);
 namespace app\controller;
 
 use app\utils\RequestControl;
+use think\facade\Session;
 
 class Lock extends Auth
 {
-    public function getData(){
+    public function email(){
         $param = request()->param();
-        //return RequestControl::getServiceConfirm($param['id']);
-    }
+        $json = RequestControl::bindEmail(session('user')->id, $param['email']);
+        if(!$json->code) Session::set('user.email', $param['email']);
 
-    public function bind(){
-        $param = request()->param();
-        //return RequestControl::advanceServiceOrder(session('user')->id, $param['id'], $param['cycle']);
+        return $json;
     }
 }

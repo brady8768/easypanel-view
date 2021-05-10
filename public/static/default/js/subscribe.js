@@ -47,13 +47,11 @@ $(function () {
                 '            <div class="card">\n' +
                 '                <div class="card-header"><h4><strong>可用节点</strong></h4></div>\n' +
                 '                <div class="card-body">\n' +
-                '<div class="table-responsive"><table class="table table-hover"><thead><tr><th>操作</th><th>名称</th><th>地址</th><th>端口</th><th>倍率</th></tr></thead>';
+                '<div class="table-responsive"><table class="table table-hover"><thead><tr><th>操作</th><th>名称</th><th>倍率</th></tr></thead>';
             _node += '<tbody>';
             $.each(res.data.nodes, function (i, v) {
-                _node += '<tr><td><button class="qrcode_btn" type="button" qr-text="'+getBase64(v)+'">扫码</button></td>';
+                _node += '<tr><td><button class="qrcode_btn" type="button" qr-text="'+v.vmess+'">扫码</button></td>';
                 _node += '<td>'+v.title+'</td>';
-                _node += '<td>'+v.host+'</td>';
-                _node += '<td>'+v.host+'</td>';
                 _node += '<td>'+v.rate+'x</td>';
                 _node += '</tr>';
             })

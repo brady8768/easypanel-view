@@ -113,6 +113,15 @@ class RequestControl
         return self::curl($api, $param);
     }
 
+    //修改密码
+    public static function changePassword($user_id, $old_pwd, $new_pwd){
+        $api = '/user/resetPassword';
+        $param['user_id'] = $user_id;
+        $param['old_password'] = $old_pwd;
+        $param['new_password'] = $new_pwd;
+        return self::curl($api, $param);
+    }
+
     //购买记录
     public static function getRecord($user_id, $page){
         $api = '/order/record';
@@ -176,6 +185,14 @@ class RequestControl
     public static function getServiceConfirm($id){
         $api = '/service/getData';
         $param['id'] = $id;
+        return self::curl($api, $param);
+    }
+
+    //绑定邮箱
+    public static function bindEmail($user_id, $email){
+        $api = '/user/email';
+        $param['user_id'] = $user_id;
+        $param['email'] = $email;
         return self::curl($api, $param);
     }
 

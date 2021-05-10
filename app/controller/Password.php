@@ -4,16 +4,22 @@ declare (strict_types = 1);
 namespace app\controller;
 
 use app\utils\RequestControl;
+use think\exception\ValidateException;
 
 class Password extends Auth
 {
-    public function getData(){
+    public function change(){
         $param = request()->param();
-        //return RequestControl::getServiceConfirm($param['id']);
-    }
 
-    public function bind(){
-        $param = request()->param();
-        //return RequestControl::advanceServiceOrder(session('user')->id, $param['id'], $param['cycle']);
+        try{
+            Validate(\app\validate\Login::class)->scene('change')->check($param);
+        }catch (ValidateException $e){
+            abort(400, $e->getMessage());
+        }
+
+        $json = RequestControl::changePassword(session('user')->id, $param['old_pwd'], $param['new_pwd']);
+        if(!$json->code) session('user', null);
+
+        return $json;
     }
 }

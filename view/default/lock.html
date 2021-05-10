@@ -24,6 +24,7 @@
                 <div class="card-header"><h4><strong>账号绑定</strong></h4></div>
                 <div class="card-body">
                     <div class="row">
+                        {if ($Request.session.user.email != '')}
                         <div class="form-group">
                             <label class="col-xs-12" for="email">绑定邮箱</label>
                             <input class="form-control" type="email" id="email" name="email" placeholder="输入要绑定的邮箱..">
@@ -31,6 +32,9 @@
                         <div class="form-group">
                             <button class="btn btn-label btn-primary" id="submit"><label><i class="mdi mdi-checkbox-marked-circle-outline"></i></label> 确认绑定</button>
                         </div>
+                        {else /}
+                        <div class="alert alert-warning" role="alert">当前账号已绑定邮箱： {:session('user')->email}</div>
+                        {/if}
                     </div>
                 </div>
             </div>
