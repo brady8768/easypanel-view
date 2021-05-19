@@ -14,8 +14,13 @@ $(function () {
                 '                  <div class="tab-pane fade active in" id="copy">\n' +
                 '                    <p>' +
                 '<div class="col-lg-6">\n' +
-                '<div>当前剩余流量 450GB 将于2020年5月6日凌晨重置流量</div>\n' +
-            '                      <div class="input-group">\n' +
+                '<div>当前剩余流量 '+res.data.surplus+'GB ';
+                if(res.data.hasOwnProperty('reset')){
+                    _html += '将于'+res.data.reset+'重置流量</div>\n';
+                }else{
+                    _html += '将于+res.data.end+服务到期</div>\n';
+                }
+            _html +=         '<div class="input-group">\n' +
             '                        <input type="text" class="form-control" readonly id="sub_input" value="'+res.data.sub_url+'" placeholder="请输入关键词...">\n' +
             '                        <span class="input-group-btn">\n' +
             '                          <button class="btn btn-dark" type="button" id="copy_url">复制订阅</button>\n' +
