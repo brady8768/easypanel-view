@@ -13,8 +13,8 @@ class Subscribe extends Auth
         if($json->code === 0 && $json->data->sub_code != ''){
             $data['sub_url'] = request()->domain() . '/sub/' . $json->data->sub_code;
             $data['surplus'] = $json->data->surplus;
-            $data['reset'] = $json->data->reset ?? '';
-            $data['end'] = $json->data->end ?? '';
+            $data['resetDay'] = $json->data->reset ?? '';
+            $data['endDay'] = $json->data->end ?? '';
             $data['nodes'] = $json->data->nodes;
         }
         return json(['code'=>0,'data'=>$data]);
