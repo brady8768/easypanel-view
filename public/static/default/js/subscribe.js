@@ -18,7 +18,7 @@ $(function () {
                 if(res.data.hasOwnProperty('reset')){
                     _html += '将于'+res.data.reset+'重置流量</div>\n';
                 }else{
-                    _html += '将于+res.data.end+服务到期</div>\n';
+                    _html += '将于'+res.data.end+'服务到期</div>\n';
                 }
             _html +=         '<div class="input-group">\n' +
             '                        <input type="text" class="form-control" readonly id="sub_input" value="'+res.data.sub_url+'" placeholder="请输入关键词...">\n' +
