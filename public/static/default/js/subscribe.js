@@ -15,7 +15,7 @@ $(function () {
                 '                    <p>' +
                 '<div class="col-lg-6">\n' +
                 '<div>当前剩余流量 '+res.data.surplus+'GB ';
-                if(res.data.hasOwnProperty('reset')){
+                if(res.data.reset){
                     _html += '将于'+res.data.reset+'重置流量</div>\n';
                 }else{
                     _html += '将于'+res.data.end+'服务到期</div>\n';

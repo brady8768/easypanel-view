@@ -12,7 +12,9 @@ class Subscribe extends Auth
         $data = [];
         if($json->code === 0 && $json->data->sub_code != ''){
             $data['sub_url'] = request()->domain() . '/sub/' . $json->data->sub_code;
-            $data['nodes'] = $json->data->nodes;
+            $data['surplus'] = $json->data->surplus;
+            $data['reset'] = $json->data->reset ?? '';
+            $data['end'] = $json->data->end ?? '';
         }
         return json(['code'=>0,'data'=>$data]);
     }
