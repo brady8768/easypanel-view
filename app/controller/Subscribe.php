@@ -15,6 +15,7 @@ class Subscribe extends Auth
             $data['surplus'] = $json->data->surplus;
             $data['reset'] = $json->data->reset ?? '';
             $data['end'] = $json->data->end ?? '';
+            $data['nodes'] = $json->data->nodes;
         }
         return json(['code'=>0,'data'=>$data]);
     }
