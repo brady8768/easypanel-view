@@ -36,7 +36,7 @@ $(function () {
                     lightyear.url('/index.html');
                 }
                 common.ok('恭喜您，充值成功。感谢您的大力支持！');
-            }, 1e3)
+            }, 2000)
         }, function () {
             common.err('抱歉，充值失败。请您稍后再试！');
         })

@@ -1,4 +1,10 @@
 $(function() {
+    let param = common.getParams();
+
+    if (param.hasOwnProperty('invite')){
+        $('#invite_code').val(param.invite);
+    }
+
     $('#login').click(function () {
         let field = {};
 
