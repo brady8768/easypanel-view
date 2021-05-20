@@ -96,8 +96,9 @@ $(function () {
 
     function checkUrl(){
         let url = window.location.href;
-        url.replace(/[?&]wait=(end|pay)/, '');
-        return url;
+        let _url = url.replace(/[?&]wait=(end|pay)/, '');
+        console.log(_url);
+        return _url;
     }
 
 });
