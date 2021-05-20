@@ -71,7 +71,8 @@ $(function () {
         let pay_type = $('#pay button.btn-success').attr('pay-type');
         let _data = {
             money : money ? money : quick.attr('quick-value'),
-            pay_type : pay_type
+            pay_type : pay_type,
+            callback : checkUrl()
         }
 
         common.ajax('recharge/confirm', _data, function (res) {
@@ -97,7 +98,6 @@ $(function () {
     function checkUrl(){
         let url = window.location.href;
         let _url = url.replace(/[?&]wait=(end|pay)/, '');
-        console.log(_url);
         return _url;
     }
 
