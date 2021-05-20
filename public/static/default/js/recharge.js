@@ -21,7 +21,7 @@ $(function () {
         }else{
             $.confirm({
                 title: '确认付款',
-                content: '请确认您是否完成了该笔付款操作？',
+                content: '请确认您是否完成了该笔付款操作？付款到账一般情况下无延时，若超过五分钟还未到账请联系客服人员处理！',
                 type: 'orange',
                 typeAnimated: false,
                 buttons: {
@@ -29,7 +29,11 @@ $(function () {
                         text: '确认已付款',
                         btnClass: 'btn-green',
                         action: function(){
-                            alert('执行检查');
+                            if(param.hasOwnProperty('callback')){
+                                window.location.href = param.callback;
+                            }else{
+                                window.location.href = '/index.html';
+                            }
                         }
                     },
                     close: {
@@ -95,6 +99,39 @@ $(function () {
         }, function () {
             common.err('抱歉，充值失败。请您稍后再试！');
         })
+    });
+
+    $('#done').click(function () {
+        $('#gridSystemModal').modal('hide');
+        $.confirm({
+            title: '确认付款',
+            content: '请确认您是否完成了该笔付款操作？付款到账一般情况下无延时，若超过五分钟还未到账请联系客服人员处理！',
+            type: 'orange',
+            typeAnimated: false,
+            buttons: {
+                omg: {
+                    text: '确认已付款',
+                    btnClass: 'btn-green',
+                    action: function(){
+                        if(param.hasOwnProperty('callback')){
+                            window.location.href = param.callback;
+                        }else{
+                            window.location.href = '/index.html';
+                        }
+                    }
+                },
+                close: {
+                    text: '支付遇到问题',
+                    btnClass: 'btn-red',
+                    action: function(){
+                        common.err('很抱歉，请向客服人员反馈该问题详细情况!');
+                        setTimeout(function() {
+                            window.location.href = checkUrl();
+                        }, 2000)
+                    }
+                }
+            }
+        });
     });
 
     function checkUrl(){

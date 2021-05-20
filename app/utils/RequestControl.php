@@ -12,7 +12,7 @@ class RequestControl
         $param['user_ip'] = request()->ip();
         $url = request()->domain() . '/recharge.html';
         if(!empty($param['callback'])){
-            $url .= '?callback=' . $param['callback'] . '&';
+            $url .= '?callback=' . urlencode($param['callback']) . '&';
             unset($param['callback']);
         }else{
             $url .= '?';
