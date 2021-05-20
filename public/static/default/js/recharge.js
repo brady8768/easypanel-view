@@ -38,7 +38,7 @@ $(function () {
                         action: function(){
                             common.err('很抱歉，请向客服人员反馈该问题详细情况!');
                             setTimeout(function() {
-                                lightyear.url(checkUrl());
+                                window.location.href = checkUrl();
                             }, 2000)
                         }
                     }
