@@ -108,7 +108,7 @@ $(function () {
             height: 256,
             background: "#ffffff",
             foreground: "#000000",
-            src: "../img/log.png"
+            src: "../img/logo.png"
         });
         $('#gridSystemModal').modal('show');
     })
