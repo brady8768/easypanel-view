@@ -1,4 +1,5 @@
 $(function () {
+    let param = common.getParams();
 
     $('#quick').on('click', 'button', function () {
         $('#quick button').removeClass('btn-success').addClass('btn-secondary');
@@ -28,15 +29,15 @@ $(function () {
         }
 
         common.ajax('recharge/confirm', param, function (res) {
-            let param = common.getParams();
-            setTimeout(function() {
+            console.log(res);
+            /*setTimeout(function() {
                 if(param.hasOwnProperty('callback')){
                     lightyear.url(param.callback);
                 }else{
                     lightyear.url('/index.html');
                 }
                 common.ok('恭喜您，充值成功。感谢您的大力支持！');
-            }, 2000)
+            }, 2000)*/
         }, function () {
             common.err('抱歉，充值失败。请您稍后再试！');
         })
