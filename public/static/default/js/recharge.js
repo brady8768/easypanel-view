@@ -72,7 +72,9 @@ $(function () {
         let _data = {
             money : money ? money : quick.attr('quick-value'),
             pay_type : pay_type,
-            callback : checkUrl()
+        }
+        if(param.hasOwnProperty('callback')){
+            _data.callback = param.callback;
         }
 
         common.ajax('recharge/confirm', _data, function (res) {
