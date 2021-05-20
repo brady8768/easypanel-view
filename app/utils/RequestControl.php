@@ -10,15 +10,15 @@ class RequestControl
         $api = '/user/recharge';
         $param['user_id'] = $user_id;
         $param['user_ip'] = request()->ip();
-        $url = $param['callback'];
-        if(strpos($url, '?') === false){
-            $url .= '?';
+        $url = request()->domain() . '/recharge.html';
+        if(!empty($param['callback'])){
+            $url .= '?callback=' . $param['callback'] . '&';
+            unset($param['callback']);
         }else{
-            $url .= '&';
+            $url .= '?';
         }
         $param['return_url'] = $url . 'wait=pay';
         if($param['pay_type'] == 'zfb') $param['quit_url'] = $url . 'wait=end';
-        unset($param['callback']);
         $param['user_agent'] = request()->header('user-agent') ?? '';
         return self::curl($api, $param);
     }
