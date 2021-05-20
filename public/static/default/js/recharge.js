@@ -37,7 +37,7 @@ $(function () {
                     height: 256,
                     background: "#ffffff",
                     foreground: "#000000",
-                    src: "/static/img/log.png"
+                    src: "../img/log.png"
                 });
                 $('#gridSystemModal').modal('show');
             }else{
