@@ -10,8 +10,14 @@ class RequestControl
         $api = '/user/recharge';
         $param['user_id'] = $user_id;
         $param['user_ip'] = request()->ip();
-        $param['return_url'] = request()->domain() . '/recharge.html?wait=pay';
-        if($param['pay_type'] == 'zfb') $param['quit_url'] = request()->domain() . '/recharge.html?wait=end';
+        $url = request()->url(true);
+        if(strpos($url, '?') === false){
+            $url .= '?';
+        }else{
+            $url .= '&';
+        }
+        $param['return_url'] = $url . 'wait=pay';
+        if($param['pay_type'] == 'zfb') $param['quit_url'] = $url . 'wait=end';
         $param['user_agent'] = request()->header('user-agent') ?? '';
         return self::curl($api, $param);
     }

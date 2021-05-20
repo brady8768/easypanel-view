@@ -1,6 +1,52 @@
 $(function () {
     let param = common.getParams();
 
+    if(param.hasOwnProperty('wait')){
+        if(param.wait == 'end'){
+            $.confirm({
+                title: '取消付款',
+                content: '您已经取消了该笔付款，如果有任何疑问请联系客服。',
+                type: 'red',
+                typeAnimated: true,
+                buttons: {
+                    close: {
+                        text: '关闭',
+                        btnClass: 'btn-red',
+                        action: function(){
+                            window.location.href = checkUrl();
+                        }
+                    }
+                }
+            });
+        }else{
+            $.confirm({
+                title: '确认付款',
+                content: '请确认您是否完成了该笔付款操作？',
+                type: 'orange',
+                typeAnimated: false,
+                buttons: {
+                    omg: {
+                        text: '确认已付款',
+                        btnClass: 'btn-green',
+                        action: function(){
+                            alert('执行检查');
+                        }
+                    },
+                    close: {
+                        text: '支付遇到问题',
+                        btnClass: 'btn-red',
+                        action: function(){
+                            setTimeout(function() {
+                                lightyear.url(checkUrl());
+                                common.err('很抱歉，请向客服人员反馈该问题详细情况!');
+                            }, 2000)
+                        }
+                    }
+                }
+            });
+        }
+    }
+
     $('#quick').on('click', 'button', function () {
         $('#quick button').removeClass('btn-success').addClass('btn-secondary');
         $(this).removeClass('btn-secondary').addClass('btn-success');
@@ -43,17 +89,15 @@ $(function () {
             }else{
                 window.location.href = res.data.pay_url;
             }
-            /*setTimeout(function() {
-                if(param.hasOwnProperty('callback')){
-                    lightyear.url(param.callback);
-                }else{
-                    lightyear.url('/index.html');
-                }
-                common.ok('恭喜您，充值成功。感谢您的大力支持！');
-            }, 2000)*/
         }, function () {
             common.err('抱歉，充值失败。请您稍后再试！');
         })
     });
+
+    function checkUrl(){
+        let url = window.location.href;
+        url.replace(/[?&]wait=(end|pay)/, '');
+        return url;
+    }
 
 });
