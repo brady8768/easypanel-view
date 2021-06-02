@@ -7,7 +7,7 @@ $(function () {
              let _html = '<div class="row">';
 
              $.each(res.data, function (i, v) {
-                 _html += '<div class="col-sm-6 col-lg-3"><div class="card"><div class="card-header ' + carType[v.level - 1] + '">' ;
+                 _html += '<div class="col-sm-6 col-lg-3"><div class="card" style="box-shadow:3px 3px 5px #888;"><div class="card-header ' + carType[v.level - 1] + '">' ;
                  _html += '<h4>'+v.title+'</h4>';
                  _html += '<ul class="card-actions"><li><button type="button"><i class="mdi mdi-thumb-up-outline"></i></button></li></ul></div><div class="card-body"><p>';
                  _html += '<div class="row"><div>'+v.level+'级套餐 </div><div>'+v.flow+' GB流量</div><div><span>￥ </span><span style="font-size: 40px;color: red;"><strong>' + v.price + '</strong></span>  起</div></div>';

@@ -24,7 +24,7 @@
                 <div class="card-header"><h4><strong>账号绑定</strong></h4></div>
                 <div class="card-body">
                     <div class="row">
-                        {if ($Request.session.user.email != '')}
+                        {if !session('user')->email}
                         <div class="form-group">
                             <label class="col-xs-12" for="email">绑定邮箱</label>
                             <input class="form-control" type="email" id="email" name="email" placeholder="输入要绑定的邮箱..">
