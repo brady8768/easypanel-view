@@ -43,6 +43,13 @@ class RequestControl
         return self::curl($api, $param);
     }
 
+    //退还订阅
+    public static function backSubscribe($user_id){
+        $api = '/subscribe/giveBack';
+        $param['user_id'] = $user_id;
+        return self::curl($api, $param);
+    }
+
     //修改密码
     public static function changePassword($user_id, $old_pwd, $new_pwd){
         $api = '/user/resetPassword';

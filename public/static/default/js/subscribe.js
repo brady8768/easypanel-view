@@ -127,7 +127,29 @@ $(function () {
     });
 
     $(document).on('click','#back_btn',function () {
-        alert('未开发完成');
+        $.confirm({
+            title: '警告',
+            content: '该操作会将您当前套餐按系统规则进行退还。退还的金额将会进入您的账户余额。您确认要进行该操作吗？',
+            type: 'orange',
+            typeAnimated: false,
+            buttons: {
+                omg: {
+                    text: '确认退还',
+                    btnClass: 'btn-orange',
+                    action : function () {
+                        common.ajax('subscribe/back', {}, function (res) {
+                            setTimeout(function() {
+                                lightyear.url('/subscribe.html');
+                                common.ok('恭喜您，订阅已退还成功，响应的金额已经退入您的账户余额！');
+                            }, 1e3)
+                        });
+                    }
+                },
+                close: {
+                    text: '关闭',
+                }
+            }
+        });
     });
 
 });

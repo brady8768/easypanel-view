@@ -23,4 +23,8 @@ class Subscribe extends Auth
     public function reset(){
         return RequestControl::resetSubscribe(session('user')->id);
     }
+
+    public function back(){
+        return RequestControl::backSubscribe(session('user')->id);
+    }
 }
